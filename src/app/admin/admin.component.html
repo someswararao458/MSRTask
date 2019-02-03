@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="xl-3">
+      <button class="btn btn-primary" (click)="dataStatus = 'name'"> Dash Board</button>
+      <button class="btn btn-primary" (click)="dataStatus = 'age'"> Products</button>
+      <button class="btn btn-primary" (click)="dataStatus = 'sal'"> Users</button>
+    </div>
+    <div class="xl-9">
+      <div class="body-case" [ngSwitch]="dataStatus">
+        <div *ngSwitchCase="'name'">
+          Here all Names
+          <ul>
+            <li *ngFor="let emp of employees"> {{emp.name}} </li>
+          </ul>
+        </div>
+                </li>
+              </ul>
+            
+        <div class="users" *ngSwitchCase="'sal'">
+          <h1>Here all Users</h1>
+          <table>
+            <tr>
+              <th>User Name</th>
+              <th>role</th>
+              <th>address</th>
+            </tr>
+            <tr *ngFor="let user of users"> </mat-tab>
+              <mat-tab label="Add Products">
+                <div class="example-container">
+                  <mat-form-field>
+                    <input matInput placeholder="Input">
+                  </mat-form-field>
+                </div>
+                <img src="" alt="">
+
+              <td> <input type="text" [disabled]="user._id!=id" value="{{user.name}}" [(ngModel)]="user.name"></td>
+              <td> <input type="text" [disabled]="user._id!=id" value="{{user.role}}" [(ngModel)]="user.role"> </td>
+              <td> <input type="text" [disabled]="user._id!=id" value="{{user.address}}" [(ngModel)]="user.address">
+              </td>
+              <td> <i class="material-icons" (click)="sendData(user._id)">edit</i>
+                <i class="material-icons" (click)="deleteUser(user._id)">remove</i>
+                <i class="material-icons" [style.color]="_color ? 'green' : 'red'" (click)="updateUser(user._id,user.name,user.email,user.phoneNumber)">check</i></td>
+            </tr>
+          </table>
+          <button routerLink="/userdata" class="btn btn-info">add User</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
